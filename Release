@@ -1,0 +1,13 @@
+your-repository.com/
+├── trollpackages.json          
+├── icons/                      
+│   ├── tweak1-icon.png
+│   └── tweak2-icon.png
+├── downloads/                  
+│   ├── tweak1.dylib
+│   ├── tweak2.zip
+│   └── tweak3.deb
+├── screenshots/                 
+│   ├── tweak1-screenshot1.png
+│   └── tweak1-screenshot2.png
+└── repo-icon.png              
