@@ -273,8 +273,8 @@ def generate_new_code():
     new_code = create_activation_code(days_duration, customer_name, customer_email, code_prefix)
     
     def remove_code(code_id):
-    db_connection = sqlite3.connect('activation_system.db')
-    db_cursor = db_connection.cursor()
+        db_connection = sqlite3.connect('activation_system.db')
+        db_cursor = db_connection.cursor()
     
     db_cursor.execute("DELETE FROM activation_codes WHERE id = ?", (code_id,))
     db_connection.commit()
@@ -320,6 +320,7 @@ if name == '__main__':
     init_database()
     server_port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=server_port)
+
 
 
 
