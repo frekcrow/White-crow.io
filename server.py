@@ -272,14 +272,15 @@ def generate_new_code():
     
     new_code = create_activation_code(days_duration, customer_name, customer_email, code_prefix)
     
-    return jsonify({'success': True, 'activation_code': new_code, 'days_duration': days_duration})
-
-# الحصول على جميع أكواد التفعيل
-@app.route('/all-codes', methods=['GET'])
-def get_all_codes():
-
-db_connection = sqlite3.connect('activation_system.db')
+    def remove_code(code_id):
+    db_connection = sqlite3.connect('activation_system.db')
     db_cursor = db_connection.cursor()
+    
+    db_cursor.execute("DELETE FROM activation_codes WHERE id = ?", (code_id,))
+    db_connection.commit()
+    db_connection.close()
+    
+    return jsonify({'success': True})
     
     db_cursor.execute("SELECT * FROM activation_codes ORDER BY created_at DESC")
     all_codes = db_cursor.fetchall()
@@ -319,6 +320,7 @@ if name == '__main__':
     init_database()
     server_port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=server_port)
+
 
 
 
