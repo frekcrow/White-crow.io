@@ -118,7 +118,6 @@ def generate_new_code():
 @app.route('/all-codes', methods=['GET'])
 def get_all_codes():
 
-CROW, [04/09/2025 2:57 AM]
 db_connection = sqlite3.connect('activation_system.db')
     db_cursor = db_connection.cursor()
     
@@ -322,5 +321,6 @@ if name == '__main__':
     init_database()
     server_port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=server_port)
+
 
 
