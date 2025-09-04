@@ -116,9 +116,11 @@ def generate_new_code():
 
 # الحصول على جميع أكواد التفعيل
 @app.route('/all-codes', methods=['GET'])
+#
 def get_all_codes():
 
 db_connection = sqlite3.connect('activation_system.db')
+#
     db_cursor = db_connection.cursor()
     
     db_cursor.execute("SELECT * FROM activation_codes ORDER BY created_at DESC")
@@ -320,6 +322,7 @@ if name == '__main__':
     init_database()
     server_port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=server_port)
+
 
 
 
